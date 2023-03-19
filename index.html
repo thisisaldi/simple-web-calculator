@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <link rel="icon" href="logo.ico">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="display">
+            <input type="text" id="remainder" value="123" disabled>
+            <input type="text" id="write" value="123" disabled>
+            <input type="text" id="expression" value="" disabled hidden>
+        </div>
+        <div class="buttons-container">
+            <button onclick="clearAll()" id="clear">CE</button>
+            <button onclick="deleteChar()" id="backspace" ><-</button>
+            <button onclick="writeChar('1');" id="one">1</button>
+            <button onclick="writeChar('2')" id="two">2</button>
+            <button onclick="writeChar('3')" id="three">3</button>
+            <button onclick="writeChar('+')" id="plus">+</button>
+            <button onclick="writeChar('4')" id="four">4</button>
+            <button onclick="writeChar('5')" id="five">5</button>
+            <button onclick="writeChar('6')" id="six">6</button>
+            <button onclick="writeChar('-')" id="minus">-</button>
+            <button onclick="writeChar('7')" id="seven">7</button>
+            <button onclick="writeChar('8')" id="eight">8</button>
+            <button onclick="writeChar('9')" id="nine">9</button>
+            <button onclick="writeChar('*')" id="multiply">*</button>
+            <button onclick="writeChar('.')" id="comma">.</button>
+            <button onclick="writeChar('0')" id="zero">0</button>
+            <button onclick="writeChar('/')" id="divide">/</button>
+            <button onclick="evaluateExpression()" id="equal">=</button>
+        </div>
+    </div>
+</body>
+</html>
