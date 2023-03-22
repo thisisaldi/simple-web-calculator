@@ -1,64 +1,62 @@
 const writeChar = (char) => {
     write = document.getElementById('write').value;
-    remainder = document.getElementById('remainder').value;
-    expression = document.getElementById('expression').value;
+    expression = document.getElementById('expression-display').value;
+    operator = document.getElementById('operator-hidden').value;
     
-    numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-    operator = ['+', '-', '*', '/'];
-    float = '.';
+    numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
+    operators = ['+', '-', '*', '/'];
 
-    if(operator.includes(char)) {
-        if(remainder === '' && write === '') return;
-        
-        if(operator.some((t) => remainder.includes(t))) {
-            if(write === '') return;
+    if(operators.includes(char)) {
+        if(write === '0') return;
+        if(expression !== '') evaluateExpression();
 
-            evaluateExpression();
-            remainder += char;
-        }
-
-        remainder = write + ' ' + char;
-        write = '';
-        expression = remainder;
-
+        operator = char;
+        expression = write;
+        write = '0';
     } else if(numbers.includes(char)) {
-        if(write === '' && char === '0') return; 
+        if(char === '.' && write.includes('.')) return;
+        if(write === '0' && char === '0') return;
+        if(write === '0' && char !== '.') write = char;
 
-        write += char;
-        expression += char;
-    
-    } else if(char === '.' && !write.includes('.')) {
-        write += char;
+        else write += char;
     }
 
     document.getElementById('write').value = write;
-    document.getElementById('remainder').value = remainder;
-    document.getElementById('expression').value = expression;
-    console.log(expression);
+    document.getElementById('expression-display').value = expression;
+    document.getElementById('operator-hidden').value = operator;
+
+    // console.log(expression);
+    // console.log(operator);
+    // console.log(write);
 };
 
 const deleteChar = () => {
-    expression = document.getElementById('write').value;
-    expression = expression.slice(0,-1);
-    document.getElementById('write').value = expression;
+    write = document.getElementById('write').value;
+    write = write.slice(0,-1);
+    if(write === '') write = '0';
+    document.getElementById('write').value = write;
 };
 
 const clearAll = () => {
-    document.getElementById('write').value = '';
-    document.getElementById('remainder').value = '';
-    document.getElementById('expression').value = '';
+    document.getElementById('write').value = '0';
+    document.getElementById('result').value = '';
+    document.getElementById('expression-display').value = '';
+    document.getElementById('expression-hidden').value = '';
 };
 
 const evaluateExpression = () => {
-    result = eval(document.getElementById('expression').value);
-    remainder = result;
-    write = result;
+    let prev = document.getElementById('expression-display').value;
+    let write = document.getElementById('write').value;
+    let operator = document.getElementById('operator-hidden').value;
 
-    document.getElementById('write').value = write;
-    document.getElementById('remainder').value = remainder;
-    document.getElementById('expression').value = remainder;
+    let expression = `${prev}${operator}${write}`;
+    let result = eval(expression);
 
-    console.log(result);
+    document.getElementById('expression-display').value = '';
+    document.getElementById('write').value = result;
+
+    // console.log(expression)
+    // console.log(result);
 };
 
 document.addEventListener('keydown', (ev) => {
@@ -74,5 +72,5 @@ document.addEventListener('keydown', (ev) => {
         evaluateExpression();
     }
 
-    console.log(ev.key);
+    // console.log(ev.key);
 });

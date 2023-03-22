@@ -12,11 +12,13 @@
 <body>
     <div class="container">
         <div class="display">
-            <input type="text" id="remainder" value="123" disabled>
-            <input type="text" id="write" value="123" disabled>
-            <input type="text" id="expression" value="" disabled hidden>
+            <input type="text" id="expression-display" value="" disabled>
+            <input type="text" id="write" value="0" disabled>
+            <input type="text" id="operator-hidden" value="" disabled hidden>
+            <input type="text" id="result" value="" disabled hidden>
         </div>
         <div class="buttons-container">
+
             <button onclick="clearAll()" id="clear">CE</button>
             <button onclick="deleteChar()" id="backspace" ><-</button>
             <button onclick="writeChar('1');" id="one">1</button>

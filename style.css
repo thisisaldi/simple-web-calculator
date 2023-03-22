@@ -22,7 +22,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 30%;
-    background-color: #1a1a1a;
+    background-color: #1b1b1b;
     border-radius: 10px;
     overflow: hidden;
     margin: 0 0 5px 0;
@@ -33,10 +33,9 @@ body {
     padding: 10px 20px;
     font-weight: 300;
     text-align: end;
-
 }
 
-#remainder {
+#expression-display {
     height: 30%;
     font-size: 30px;
     color: #efefef;
@@ -48,6 +47,7 @@ body {
     color: #efefef;
 }
 
+
 .buttons-container {
     display: grid;
     width: 100%;
@@ -58,7 +58,6 @@ body {
 }
 
 #clear {
-    grid-row: 1;
     grid-column: 1 / 4;
 }
 
